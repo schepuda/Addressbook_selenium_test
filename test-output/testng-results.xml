@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="13206" started-at="2015-08-25T20:14:24Z" finished-at="2015-08-25T20:14:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="13206" started-at="2015-08-25T20:14:24Z" finished-at="2015-08-25T20:14:37Z">
+      <class name="com.example.tests.EmptyGroupCreationTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.tests.EmptyGroupCreationTest@3ac42916]" name="setUp" is-config="true" duration-ms="7247" started-at="2015-08-25T23:14:24Z" finished-at="2015-08-25T23:14:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testEmptyGroupCreation()[pri:0, instance:com.example.tests.EmptyGroupCreationTest@3ac42916]" name="testEmptyGroupCreation" duration-ms="1303" started-at="2015-08-25T23:14:34Z" finished-at="2015-08-25T23:14:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testEmptyGroupCreation -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.tests.EmptyGroupCreationTest@3ac42916]" name="tearDown" is-config="true" duration-ms="1830" started-at="2015-08-25T23:14:35Z" finished-at="2015-08-25T23:14:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.example.tests.EmptyGroupCreationTest -->
+      <class name="com.example.tests.FillGroupCreationTest">
+        <test-method status="PASS" signature="testNonEmptyGroupCreation()[pri:0, instance:com.example.tests.FillGroupCreationTest@13b6d03]" name="testNonEmptyGroupCreation" duration-ms="2788" started-at="2015-08-25T23:14:31Z" finished-at="2015-08-25T23:14:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNonEmptyGroupCreation -->
+      </class> <!-- com.example.tests.FillGroupCreationTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
