@@ -4,6 +4,7 @@ public class FillGroupForm{
 	public String groupname;
 	public String groupheader;
 	public String groupfooter;
+	private Object addressfirstname;
 
 	public FillGroupForm() {
 	}
@@ -13,4 +14,5 @@ public class FillGroupForm{
 		this.groupheader = groupheader;
 		this.groupfooter = groupfooter;
 	}
+	
 }

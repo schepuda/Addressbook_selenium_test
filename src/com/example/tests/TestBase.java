@@ -2,12 +2,14 @@ package com.example.tests;
 
 import static org.junit.Assert.fail;
 import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -51,6 +53,48 @@ public class TestBase {
 		driver.get(baseUrl + "/addressbookv4.1.4/");
 	}
 
+	protected void initNewAddressCreation() {
+		driver.findElement(By.linkText("add new")).click();
+	}
+
+	protected void submitNewAddressCreation (FillAddressForm parameterObject) {
+	    driver.findElement(By.name("firstname")).clear();
+	    driver.findElement(By.name("firstname")).sendKeys(parameterObject.firstname);
+	    driver.findElement(By.name("lastname")).clear();
+	    driver.findElement(By.name("lastname")).sendKeys(parameterObject.lastname);
+	    driver.findElement(By.name("address")).clear();
+	    driver.findElement(By.name("address")).sendKeys(parameterObject.address);
+	    driver.findElement(By.name("home")).clear();
+	    driver.findElement(By.name("home")).sendKeys(parameterObject.home);
+	    driver.findElement(By.name("mobile")).clear();
+	    driver.findElement(By.name("mobile")).sendKeys(parameterObject.mobile);
+	    driver.findElement(By.name("work")).clear();
+	    driver.findElement(By.name("work")).sendKeys(parameterObject.work);
+	    driver.findElement(By.name("email")).clear();
+	    driver.findElement(By.name("email")).sendKeys(parameterObject.email);
+	    driver.findElement(By.name("email2")).clear();
+	    driver.findElement(By.name("email2")).sendKeys(parameterObject.email2);
+	    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(parameterObject.bday);
+	    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(parameterObject.bmonth);
+	    new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("Rob");
+	    driver.findElement(By.name("byear")).clear();
+	    driver.findElement(By.name("byear")).sendKeys(parameterObject.byear);
+	    driver.findElement(By.name("address2")).clear();
+	    driver.findElement(By.name("address2")).sendKeys(parameterObject.address2);
+	    driver.findElement(By.name("phone2")).clear();
+	    driver.findElement(By.name("phone2")).sendKeys(parameterObject.phone2);
+	    driver.findElement(By.name("submit")).click();
+
+	}
+	
+	protected void submitNewAddressCreation() {
+		driver.findElement(By.name("submit")).click();
+	}
+
+	protected void returnToHomePage() {
+		driver.findElement(By.linkText("home page")).click();
+	}
+	
 	@AfterTest
 	public void tearDown() throws Exception {
 	    driver.quit();
