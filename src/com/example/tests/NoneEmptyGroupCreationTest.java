@@ -9,9 +9,9 @@ public class NoneEmptyGroupCreationTest extends TestBase {
     gotoGroupPage();
     initGroupCreation();
     FillGroupForm groupObject = new FillGroupForm();
-    groupObject.groupname = "group_1";
-    groupObject.groupheader = "Группа VIP";
-    groupObject.groupfooter = "Для VIP-клиентов";
+    groupObject.name = "group_1";
+    groupObject.header = "Группа VIP";
+    groupObject.footer = "Для VIP-клиентов";
 	submitGroupCreation(groupObject);
     returnToGroupPage();
   }

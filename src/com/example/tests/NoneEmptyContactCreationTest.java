@@ -2,12 +2,12 @@ package com.example.tests;
 
 import org.testng.annotations.Test;
 
-public class NoneEmptyAddressCreationTest extends TestBase {	
+public class NoneEmptyContactCreationTest extends TestBase {	
 	@Test
 	public void testFillAddressCreationTest() throws Exception {
 	    openMainPage();
 	    initNewAddressCreation();
-	    FillAddressForm addressObject = new FillAddressForm();
+	    FillContactCreationForm addressObject = new FillContactCreationForm();
 	    addressObject.firstname = "Евгений оглы";
 	    addressObject.lastname = "Мамин-Сибиряк";
 	    addressObject.address = "443035 г. Самара\nСамарской обл.\nУл. Нагорная-Перевальная, д. 138, корпус 2, кв. 159";

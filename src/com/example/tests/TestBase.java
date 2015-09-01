@@ -33,11 +33,11 @@ public class TestBase {
 
 	protected void submitGroupCreation(FillGroupForm parameterObject) {
 		driver.findElement(By.name("group_name")).clear();
-	    driver.findElement(By.name("group_name")).sendKeys(parameterObject.groupname);
+	    driver.findElement(By.name("group_name")).sendKeys(parameterObject.name);
 	    driver.findElement(By.name("group_header")).clear();
-	    driver.findElement(By.name("group_header")).sendKeys(parameterObject.groupheader);
+	    driver.findElement(By.name("group_header")).sendKeys(parameterObject.header);
 	    driver.findElement(By.name("group_footer")).clear();
-	    driver.findElement(By.name("group_footer")).sendKeys(parameterObject.groupfooter);
+	    driver.findElement(By.name("group_footer")).sendKeys(parameterObject.footer);
 	    driver.findElement(By.name("submit")).click();
 	}
 
@@ -57,7 +57,7 @@ public class TestBase {
 		driver.findElement(By.linkText("add new")).click();
 	}
 
-	protected void submitNewAddressCreation (FillAddressForm parameterObject) {
+	protected void submitNewAddressCreation (FillContactCreationForm parameterObject) {
 	    driver.findElement(By.name("firstname")).clear();
 	    driver.findElement(By.name("firstname")).sendKeys(parameterObject.firstname);
 	    driver.findElement(By.name("lastname")).clear();
