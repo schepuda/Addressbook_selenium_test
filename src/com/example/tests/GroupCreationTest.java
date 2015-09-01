@@ -2,9 +2,9 @@ package com.example.tests;
 
 import org.testng.annotations.Test;
 
-public class NoneEmptyGroupCreationTest extends TestBase {
+public class GroupCreationTest extends TestBase {
   @Test
-  public void testNonEmptyGroupCreation() throws Exception {
+  public void testGroupCreation() throws Exception {
     openMainPage();
     gotoGroupPage();
     initGroupCreation();
@@ -12,7 +12,8 @@ public class NoneEmptyGroupCreationTest extends TestBase {
     groupObject.name = "group_1";
     groupObject.header = "Группа VIP";
     groupObject.footer = "Для VIP-клиентов";
-	submitGroupCreation(groupObject);
+	fillGroupCreation(groupObject);
+	submitGroupCreation();
     returnToGroupPage();
   }
 }

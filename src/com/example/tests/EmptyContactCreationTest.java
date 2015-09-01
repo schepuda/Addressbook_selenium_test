@@ -4,10 +4,10 @@ import org.testng.annotations.Test;
 
 public class EmptyContactCreationTest extends TestBase {
   @Test
-  public void testEmptyGroupCreation() throws Exception {
+  public void testEmptyContactCreation() throws Exception {
 	  openMainPage();
-	  initNewAddressCreation();
-      submitNewAddressCreation();
+	  initContactCreation();
+      submitContactCreation();
 	  returnToHomePage();
   }
 }

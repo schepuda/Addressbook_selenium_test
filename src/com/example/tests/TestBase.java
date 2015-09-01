@@ -31,16 +31,19 @@ public class TestBase {
 		driver.findElement(By.linkText("group page")).click();
 	}
 
-	protected void submitGroupCreation(FillGroupForm parameterObject) {
+	protected void submitGroupCreation() {
+	    driver.findElement(By.name("submit")).click();
+	}
+	
+	protected void fillGroupCreation(FillGroupForm parameterObject) {
 		driver.findElement(By.name("group_name")).clear();
 	    driver.findElement(By.name("group_name")).sendKeys(parameterObject.name);
 	    driver.findElement(By.name("group_header")).clear();
 	    driver.findElement(By.name("group_header")).sendKeys(parameterObject.header);
 	    driver.findElement(By.name("group_footer")).clear();
 	    driver.findElement(By.name("group_footer")).sendKeys(parameterObject.footer);
-	    driver.findElement(By.name("submit")).click();
 	}
-
+	
 	protected void initGroupCreation() {
 		driver.findElement(By.name("new")).click();
 	}
@@ -53,11 +56,11 @@ public class TestBase {
 		driver.get(baseUrl + "/addressbookv4.1.4/");
 	}
 
-	protected void initNewAddressCreation() {
+	protected void initContactCreation() {
 		driver.findElement(By.linkText("add new")).click();
 	}
 
-	protected void submitNewAddressCreation (FillContactCreationForm parameterObject) {
+	protected void fillContactCreation (FillContactForm parameterObject) {
 	    driver.findElement(By.name("firstname")).clear();
 	    driver.findElement(By.name("firstname")).sendKeys(parameterObject.firstname);
 	    driver.findElement(By.name("lastname")).clear();
@@ -76,18 +79,16 @@ public class TestBase {
 	    driver.findElement(By.name("email2")).sendKeys(parameterObject.email2);
 	    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(parameterObject.bday);
 	    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(parameterObject.bmonth);
-	    new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("Rob");
+	    //new Select(driver.findElement(By.name("new_group"))).selectByVisibleText("Rob");
 	    driver.findElement(By.name("byear")).clear();
 	    driver.findElement(By.name("byear")).sendKeys(parameterObject.byear);
 	    driver.findElement(By.name("address2")).clear();
 	    driver.findElement(By.name("address2")).sendKeys(parameterObject.address2);
 	    driver.findElement(By.name("phone2")).clear();
 	    driver.findElement(By.name("phone2")).sendKeys(parameterObject.phone2);
-	    driver.findElement(By.name("submit")).click();
-
 	}
 	
-	protected void submitNewAddressCreation() {
+	protected void submitContactCreation() {
 		driver.findElement(By.name("submit")).click();
 	}
 

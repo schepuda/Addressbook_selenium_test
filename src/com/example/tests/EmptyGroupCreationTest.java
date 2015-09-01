@@ -8,7 +8,7 @@ public class EmptyGroupCreationTest extends TestBase {
     openMainPage();
     gotoGroupPage();
     initGroupCreation();
-    submitGroupCreation(new FillGroupForm());
+    submitGroupCreation();
     returnToGroupPage();
   }
 }
