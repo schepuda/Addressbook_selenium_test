@@ -8,11 +8,11 @@ public class GroupCreationTest extends TestBase {
     app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().gotoGroupPage();
     app.getGroupHelper().initGroupCreation();
-    FillGroupForm groupObject = new FillGroupForm();
-    groupObject.name = "group_1";
-    groupObject.header = "Группа VIP";
-    groupObject.footer = "Для VIP-клиентов";
-	app.getGroupHelper().fillGroupCreation(app, this, groupObject);
+    FillGroupForm group = new FillGroupForm();
+    group.name = "group_1";
+    group.header = "Группа VIP";
+    group.footer = "Для VIP-клиентов";
+	app.getGroupHelper().fillGroupCreation(app, this, group);
 	app.getGroupHelper().submitGroupCreation();
     app.getGroupHelper().returnToGroupPage();
   }
