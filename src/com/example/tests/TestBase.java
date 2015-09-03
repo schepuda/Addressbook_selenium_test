@@ -7,13 +7,13 @@ import com.example.framework.ApplicationManager;
 
 public class TestBase {
 
-	protected static ApplicationManager app;
+	public static ApplicationManager app;
 	
 	@BeforeTest
 	public void setUp() throws Exception {
 		app = new ApplicationManager();
 	  }
-
+	
 	@AfterTest
 	public void tearDown() throws Exception {
 		app.stop();

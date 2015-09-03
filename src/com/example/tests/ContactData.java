@@ -1,6 +1,6 @@
 package com.example.tests;
 
-public class FillContactForm {
+public class ContactData {
 	public String firstname;
 	public String lastname;
 	public String address;
@@ -16,6 +16,6 @@ public class FillContactForm {
 	public String address2;
 	public String phone2;
 	
-	public FillContactForm() {
+	public ContactData() {
 	}
 }
