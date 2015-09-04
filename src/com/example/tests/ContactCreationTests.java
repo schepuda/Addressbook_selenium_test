@@ -24,7 +24,7 @@ public class ContactCreationTests extends TestBase {
 	    //contact.new_group = "Rob";
 	    contact.address2 = "103035 Los-Angeles\nCalifornia st.\nPenny Lane str. - 50/4, office 4030";
 	    contact.phone2 = "9994433";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -36,7 +36,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.firstname = "John-Connor";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -47,7 +47,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.lastname = "Albert Einstein";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -58,7 +58,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.address = "103035 Los-Angeles\nCalifornia st.\nPenny Lane str. - 50/4, office 4030";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -69,7 +69,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.home = "+7 (999) 888 77-66-11";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -80,7 +80,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.mobile = "+7 (999) 888 77-66-22";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -91,7 +91,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.work = "+7 (999) 888 77-66-33";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -102,7 +102,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.email = "schepuda2@mail.ru";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -113,7 +113,7 @@ public class ContactCreationTests extends TestBase {
 	    app.getContactHelper().initContactCreation();
 	    ContactData contact = new ContactData();
 	    contact.email2 = "schepuda2@gmail.com";
-	    app.getContactHelper().fillContactData(app, this, contact);
+	    app.getContactHelper().fillContactData(contact);
 	    app.getContactHelper().submitContactCreation();
 	    app.getContactHelper().returnToHomePage();
 	  }
@@ -125,7 +125,7 @@ public class ContactCreationTests extends TestBase {
 		    app.getContactHelper().initContactCreation();
 		    ContactData contact = new ContactData();
 		    contact.bday = "31";
-		    app.getContactHelper().fillContactData(app, this, contact);
+		    app.getContactHelper().fillContactData(contact);
 		    app.getContactHelper().submitContactCreation();
 		    app.getContactHelper().returnToHomePage();
 		  }
@@ -136,7 +136,7 @@ public class ContactCreationTests extends TestBase {
 		    app.getContactHelper().initContactCreation();
 		    ContactData contact = new ContactData();
 		    contact.bmonth = "December";
-		    app.getContactHelper().fillContactData(app, this, contact);
+		    app.getContactHelper().fillContactData(contact);
 		    app.getContactHelper().submitContactCreation();
 		    app.getContactHelper().returnToHomePage();
 		  }
@@ -147,7 +147,7 @@ public class ContactCreationTests extends TestBase {
 		    app.getContactHelper().initContactCreation();
 		    ContactData contact = new ContactData();
 		    contact.byear = "2001";
-		    app.getContactHelper().fillContactData(app, this, contact);
+		    app.getContactHelper().fillContactData(contact);
 		    app.getContactHelper().submitContactCreation();
 		    app.getContactHelper().returnToHomePage();
 		  }
@@ -158,7 +158,7 @@ public class ContactCreationTests extends TestBase {
 		    app.getContactHelper().initContactCreation();
 		    ContactData contact = new ContactData();
 		    contact.address2 = "443035 г. Бобруйск\nБелорусской респ.\nУл. Нагорная-Перевальная, д. 138/45, корпус 2, кв. 159";
-		    app.getContactHelper().fillContactData(app, this, contact);
+		    app.getContactHelper().fillContactData(contact);
 		    app.getContactHelper().submitContactCreation();
 		    app.getContactHelper().returnToHomePage();
 		  }
@@ -169,7 +169,7 @@ public class ContactCreationTests extends TestBase {
 		    app.getContactHelper().initContactCreation();
 		    ContactData contact = new ContactData();
 		    contact.phone2 = "+7 (999) 888 77-66-44";
-		    app.getContactHelper().fillContactData(app, this, contact);
+		    app.getContactHelper().fillContactData(contact);
 		    app.getContactHelper().submitContactCreation();
 		    app.getContactHelper().returnToHomePage();
 	  }
@@ -192,7 +192,7 @@ public class ContactCreationTests extends TestBase {
 			    contact.bday = "-";
 			    contact.bmonth = "-";
 			    contact.byear = "18001";
-			    app.getContactHelper().fillContactData(app, this, contact);
+			    app.getContactHelper().fillContactData(contact);
 			    app.getContactHelper().submitContactCreation();
 			    app.getContactHelper().returnToHomePage();
 			  }

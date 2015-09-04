@@ -13,7 +13,7 @@ public class GroupModificationTests extends TestBase {
 	    group.name = "group_3";
 	    group.header = "Группа VIP - 3";
 	    group.footer = "Для VIP-клиентов 3";
-		app.getGroupHelper().fillGroupData(app, this, group);
+		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 
@@ -24,7 +24,7 @@ public class GroupModificationTests extends TestBase {
 	    app.getGroupHelper().initGroupModification(2);
 	    GroupData group = new GroupData();
 	    group.name = "group_4";
-		app.getGroupHelper().fillGroupData(app, this, group);
+		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 
@@ -34,7 +34,7 @@ public class GroupModificationTests extends TestBase {
 	    app.getGroupHelper().initGroupModification(2);
 	    GroupData group = new GroupData();
 	    group.header = "Группа VIP - 4";
-		app.getGroupHelper().fillGroupData(app, this, group);
+		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 	  
@@ -44,7 +44,7 @@ public class GroupModificationTests extends TestBase {
 	    app.getGroupHelper().initGroupModification(2);
 	    GroupData group = new GroupData();
 	    group.footer = "Для VIP-клиентов - 4";
-		app.getGroupHelper().fillGroupData(app, this, group);
+		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 	  
@@ -57,7 +57,7 @@ public class GroupModificationTests extends TestBase {
 	    group.name = "group_5";
 	    group.header = "Группа VIP - 5";
 	    group.footer = "Для VIP-клиентов 5";
-		app.getGroupHelper().fillGroupData(app, this, group);
+		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 	  

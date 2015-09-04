@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 //import org.openqa.selenium.support.ui.Select;
 
 import com.example.tests.ContactData;
-import com.example.tests.TestBase;
 
 public class ContactHelper extends HelperBase{
 
@@ -16,7 +15,7 @@ public class ContactHelper extends HelperBase{
 		click(By.linkText("add new"));
 	}
 
-	public void fillContactData (ApplicationManager applicationManager, TestBase testBase, ContactData contact) {
+	public void fillContactData (ContactData contact) {
 		type(By.name("firstname"), contact.firstname);
 		type(By.name("lastname"), contact.lastname);
 		type(By.name("address"), contact.address);
@@ -42,11 +41,7 @@ public class ContactHelper extends HelperBase{
 	}
 	
 	public void initContactEditByIndex(int index) {
-		if (index < 2) {
-			click(By.cssSelector("img[alt=\"Edit\"]"));
-		} else {
 			click(By.xpath("(//img[@alt='Edit'])[" + index + "]"));
-		}
 	}
 	
 	public void submitContactModification() {
