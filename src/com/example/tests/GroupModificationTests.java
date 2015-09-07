@@ -1,5 +1,9 @@
 package com.example.tests;
 
+import static org.testng.Assert.assertEquals;
+import java.util.Collections;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class GroupModificationTests extends TestBase {
@@ -7,83 +11,181 @@ public class GroupModificationTests extends TestBase {
 	//полная модификация группы
 	  @Test
 	  public void modifyAllGroup() throws Exception {
+		GroupData group = new GroupData ("group_3", "Группа VIP - 3", "Для VIP-клиентов 3");
+		int index = 0;
 		app.getNavigationHelper().openGroupPage();
-	    app.getGroupHelper().initGroupModification(1);
-	    GroupData group = new GroupData();
-	    group.name = "group_3";
-	    group.header = "Группа VIP - 3";
-	    group.footer = "Для VIP-клиентов 3";
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+	    app.getGroupHelper().initGroupModification(index);
 		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //сравнить состояния
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	  }
 
 	//передача каждого атрибута группы
 	  @Test
 	  public void modifyNameGroup() throws Exception {
+		GroupData group = new GroupData ("group_4", "", "");
+		int index = 1;
 		app.getNavigationHelper().openGroupPage();
-	    app.getGroupHelper().initGroupModification(2);
-	    GroupData group = new GroupData();
-	    group.name = "group_4";
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+	    app.getGroupHelper().initGroupModification(index);
 		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //сравнить состояния
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	  }
 
 	  @Test
 	  public void modifyHeaderGroup() throws Exception {
+		GroupData group = new GroupData ("", "Группа VIP - 4", "");
+		int index = 1;
 		app.getNavigationHelper().openGroupPage();
-	    app.getGroupHelper().initGroupModification(2);
-	    GroupData group = new GroupData();
-	    group.header = "Группа VIP - 4";
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+	    app.getGroupHelper().initGroupModification(index);
 		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //сравнить состояния
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	  }
 	  
 	  @Test
 	  public void modifyFooterGroup() throws Exception {
+		GroupData group = new GroupData ("", "", "Для VIP-клиентов - 4");
+		int index = 1;
 		app.getNavigationHelper().openGroupPage();
-	    app.getGroupHelper().initGroupModification(2);
-	    GroupData group = new GroupData();
-	    group.footer = "Для VIP-клиентов - 4";
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+	    app.getGroupHelper().initGroupModification(index);
 		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //сравнить состояния
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
 	  }
 	  
 	//проверка передачи пустых значений: сделаем фулл-группу, а потом ее почистим
 	  @Test
 	  public void modifyFullGroup() throws Exception {
+		GroupData group = new GroupData ("group_5", "Группа VIP - 5", "Для VIP-клиентов 5");
+		int index = 2;
 		app.getNavigationHelper().openGroupPage();
-	    app.getGroupHelper().initGroupModification(3);
-	    GroupData group = new GroupData();
-	    group.name = "group_5";
-	    group.header = "Группа VIP - 5";
-	    group.footer = "Для VIP-клиентов 5";
+	    app.getGroupHelper().initGroupModification(index);
 		app.getGroupHelper().fillGroupData(group);
 	    app.getGroupHelper().goToGroupPageMod();
 	  }
 	  
+	  @Test
+	  public void modifyEmptyGroup() throws Exception {
+		GroupData group = new GroupData ("", "", "");
+		int index = 2;
+		app.getNavigationHelper().openGroupPage();
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+	    app.getGroupHelper().initGroupModification(index);
+		app.getGroupHelper().fillGroupData(group);
+	    app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+	    
+	    //сравнить состояния
+	    oldList.remove(index);
+	    oldList.add(group);
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
+	  }
+		
+		
    //клик по UpdateGroup, изменений в форме не вносилось
      @Test
      public void modifyUnmodifyGroup() throws Exception {
-   	app.getNavigationHelper().openGroupPage();
-      app.getGroupHelper().initGroupModification(2);
-      app.getGroupHelper().goToGroupPageMod();
+ 		int index = 1;
+ 		app.getNavigationHelper().openGroupPage();
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+		
+		//действия
+ 		app.getGroupHelper().initGroupModification(index);
+ 		app.getGroupHelper().goToGroupPageMod();
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+ 		
+	    //сравнить состояния
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
    }       
         
      //клик по EditGroup, чекбокс не выбран
        @Test
        public void modifyUnselectGroup() throws Exception {
      	app.getNavigationHelper().openGroupPage();
+
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
      	app.getGroupHelper().clickGroupModification();
         app.getGroupHelper().goToGroupPageMod();
+
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+ 		
+	    //сравнить состояния
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
      }
        
      //клик по EditGroup, выбрали два чекбокса
        @Test
        public void modifyTwoSelectGroup() throws Exception {
      	app.getNavigationHelper().openGroupPage();
+
+		//сохранить исходное состояние
+		List<GroupData> oldList = app.getGroupHelper().getGroups();
+     	app.getGroupHelper().selectGroupByIndex(0);
      	app.getGroupHelper().selectGroupByIndex(1);
-     	app.getGroupHelper().selectGroupByIndex(2);
      	app.getGroupHelper().clickGroupModification();
         app.getGroupHelper().goToGroupPageMod();
+
+	    //сохранить новое состояние
+	    List<GroupData> newList = app.getGroupHelper().getGroups();
+ 		
+	    //сравнить состояния
+	    Collections.sort(oldList);
+	    assertEquals(newList, oldList);
      }
 }

@@ -5,17 +5,21 @@ import org.testng.annotations.BeforeTest;
 
 import com.example.framework.ApplicationManager;
 
-public class TestBase {
-
-	protected static ApplicationManager app;
-	
-	@BeforeTest
-	public void setUp() throws Exception {
-		app = new ApplicationManager();
-	  }
-	
-	@AfterTest
-	public void tearDown() throws Exception {
-		app.stop();
-	  }
+	public class TestBase
+	{
+		protected static ApplicationManager app;
+  
+		@BeforeTest
+		public void setUp()
+				throws Exception
+		{
+			app = new ApplicationManager();
+		}
+  
+		@AfterTest
+		public void tearDown()
+				throws Exception
+		{
+			app.stop();
+		}
 }
