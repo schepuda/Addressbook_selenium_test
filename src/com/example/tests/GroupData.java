@@ -14,10 +14,9 @@ public class GroupData implements Comparable<GroupData>{
 		this.footer = footer;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "GroupData [name=" + name + "]";
+		return "GroupData [name=" + name + ", header=" + header + ", footer=" + footer + "]";
 	}
 
 	@Override
@@ -27,6 +26,7 @@ public class GroupData implements Comparable<GroupData>{
 		//result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -45,8 +45,10 @@ public class GroupData implements Comparable<GroupData>{
 		return true;
 	}
 
+
 	@Override
 	public int compareTo(GroupData other) {
 		return this.name.toLowerCase().compareTo(other.name.toLowerCase());
 	}
+	
 }

@@ -55,15 +55,6 @@ public class GroupHelper extends HelperBase{
 		click(By.name("delete"));
 	}
 	
-	public void goToGroupPageMod() {
-		submitGroupModification();
-	    returnToGroupPage();
-	}
-	
-	public void goToGroupPageCreat() {
-		submitGroupCreation();
-	    returnToGroupPage();
-	}
 
 	public List<GroupData> getGroups() {
 		List<GroupData> groups = new ArrayList<GroupData>();
