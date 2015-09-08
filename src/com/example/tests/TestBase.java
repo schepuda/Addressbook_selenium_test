@@ -10,16 +10,12 @@ import com.example.framework.ApplicationManager;
 		protected static ApplicationManager app;
   
 		@BeforeTest
-		public void setUp()
-				throws Exception
-		{
+		public void setUp() throws Exception	{
 			app = new ApplicationManager();
 		}
   
 		@AfterTest
-		public void tearDown()
-				throws Exception
-		{
+		public void tearDown() throws Exception {
 			app.stop();
 		}
 }

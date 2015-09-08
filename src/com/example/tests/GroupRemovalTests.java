@@ -9,59 +9,62 @@ import org.testng.annotations.Test;
 
 public class GroupRemovalTests extends TestBase  {
 	 	
-	//удалим одну группу сверху
+	//remove top group
 	  @Test
 	  public void deleteSomeGroup() throws Exception {
 		app.getNavigationHelper().openGroupPage();
-	    //сохранить исходное состояние
+		//save old list
 	    List<GroupData> oldList = app.getGroupHelper().getGroups();
 	    
+	    //actions
 	    app.getGroupHelper().selectGroupByIndex(0);
 	    app.getGroupHelper().deleteGroup();
 	    app.getGroupHelper().returnToGroupPage();
-	    //сохранить новое состояние
+	    //save new list
 	    List<GroupData> newList = app.getGroupHelper().getGroups();
 	    	    
-	    //сравнить состояния
+	    //compare lists
 	    oldList.remove(0);
 	    Collections.sort(oldList);
 	    assertEquals(newList, oldList);
 	  }
 	  
-	//удаление более одной группы
+	//remove more than one group
 	  @Test
 	  public void deleteSameGroup() throws Exception {
 		app.getNavigationHelper().openGroupPage();
-	    //сохранить исходное состояние
+		//save old list
 	    List<GroupData> oldList = app.getGroupHelper().getGroups();
 	    
+	    //actions
 	    app.getGroupHelper().selectGroupByIndex(0);
 	    app.getGroupHelper().selectGroupByIndex(1);
 	    app.getGroupHelper().deleteGroup();
 	    app.getGroupHelper().returnToGroupPage();
-	    //сохранить новое состояние
+	    //save new list
 	    List<GroupData> newList = app.getGroupHelper().getGroups();
 	    	    
-	    //сравнить состояния
+	    //compare lists
 	    oldList.remove(1);
 	    oldList.remove(0);
 	    Collections.sort(oldList);
 	    assertEquals(newList, oldList);
 	  }
 	  
-	//клик по Delete, чекбокс группы не выбран
+	//click to Delete-button without checkbox
 	  @Test
 	  public void deleteUnselectedGroup() throws Exception {
 		app.getNavigationHelper().openGroupPage();
-	    //сохранить исходное состояние
+		//save old list
 	    List<GroupData> oldList = app.getGroupHelper().getGroups();
 	    
+	    //actions
 	    app.getGroupHelper().deleteGroup();
 	    app.getGroupHelper().returnToGroupPage();
-	    //сохранить новое состояние
+	    //save new list
 	    List<GroupData> newList = app.getGroupHelper().getGroups();
 	    	    
-	    //сравнить состояния
+	    //save new list
 	    Collections.sort(oldList);
 	    assertEquals(newList, oldList);
 	  }
