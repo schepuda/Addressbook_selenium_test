@@ -35,10 +35,10 @@ public class TestBase
     List<Object[]> list = new ArrayList();
     for (int i = 0; i < 5; i++)
     {
-      GroupData group = new GroupData();
-      group.name = generateRandomGroupString();
-      group.header = generateRandomGroupString();
-      group.footer = generateRandomGroupString();
+      GroupData group = new GroupData()
+    	.withName(generateRandomGroupString())
+    	.withHeader(generateRandomGroupString())
+    	.withFooter(generateRandomGroupString());
       list.add(new Object[] { group });
     }
     return list.iterator();
@@ -60,22 +60,21 @@ public class TestBase
     List<Object[]> list = new ArrayList();
     for (int i = 0; i < 5; i++)
     {
-      ContactData contact = new ContactData();
-      contact.firstname = generateRandomContactString();
-	  contact.firstname = generateRandomContactString();
-	  contact.lastname = generateRandomContactString();
-	  contact.address = generateRandomContactString();
-	  contact.home = generateRandomPhoneString();
-	  contact.mobile = generateRandomPhoneString();
-	  contact.work = generateRandomPhoneString();
-	  contact.email = generateRandomContactString();
-	  contact.email2 = generateRandomContactString();
-	  contact.bday = generateRandomDateString();
-	  contact.bmonth = generateRandomMonthString();
-	  contact.byear = generateRandomYearString();
-	  //contact.new_group = generateRandomContactString();
-	  contact.address2 = generateRandomContactString();
-	  contact.phone2 = generateRandomPhoneString();
+      ContactData contact = new ContactData()
+	  .withFirstname(generateRandomContactString())
+	  .withLastname(generateRandomContactString())
+	  .withAddress(generateRandomContactString())
+	  .withHome(generateRandomPhoneString())
+	  .withMobile(generateRandomPhoneString())
+	  .withWork(generateRandomPhoneString())
+	  .withEmail(generateRandomContactString())
+	  .withEmail2(generateRandomContactString())
+	  .withBday(generateRandomDateString())
+	  .withBmonth(generateRandomMonthString())
+	  .withByear(generateRandomYearString())
+	  //.withNew_group(generateRandomContactString())
+	  .withAddress2(generateRandomContactString())
+	  .withPhone2(generateRandomPhoneString());
       list.add(new Object[] { contact });
     }
     return list.iterator();

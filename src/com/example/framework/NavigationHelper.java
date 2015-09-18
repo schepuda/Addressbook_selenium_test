@@ -8,16 +8,26 @@ public class NavigationHelper extends HelperBase{
 		super(manager);
 	}
 
-	public void openMainPage() {
-		manager.driver.get(manager.baseUrl + "/addressbookv4.1.4/");
+	public void toMainPage() {
+		if (! onMainPage()) {
+			click(By.linkText("home"));
+		}
 	}
 
-	public void gotoGroupPage() {
+	private boolean onMainPage() {
+		return (driver.findElements(By.id("maintable")).size() > 0);
+	}
+
+	
+	public void toGroupsPage() {
+		if (! onGroupPage()) {
 		click(By.linkText("groups"));
+		}
 	}
 
-	public void openGroupPage() {
-		openMainPage();
-	    gotoGroupPage();
+	private boolean onGroupPage() {
+		return (driver.getCurrentUrl().contains("/group.php")
+			&& driver.findElements(By.name("new")).size() >0);
 	}
+	
 }

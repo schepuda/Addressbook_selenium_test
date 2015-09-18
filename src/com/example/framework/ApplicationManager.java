@@ -17,7 +17,8 @@ public class ApplicationManager {
 	public ApplicationManager() {
 	    driver = new FirefoxDriver();
 	    baseUrl = "http://localhost/";
-	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	    driver.get(baseUrl + "/addressbookv4.1.4/");
 	}
 
 	public void stop() {
@@ -25,7 +26,7 @@ public class ApplicationManager {
 	    }		
 	
 
-    public NavigationHelper getNavigationHelper() {
+    public NavigationHelper NavigateTo() {
     	if (navigationHelper == null) {
     		navigationHelper = new NavigationHelper(this);
 		}

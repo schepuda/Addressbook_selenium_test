@@ -1,12 +1,12 @@
 package com.example.framework;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.example.tests.GroupData;
+import com.example.utils.SortedListOf;
 
 public class GroupHelper extends HelperBase{
 
@@ -14,90 +14,106 @@ public class GroupHelper extends HelperBase{
 		super(manager);
 	}
 	
-	private List<GroupData> cashedGroups;
+	private SortedListOf<GroupData> cashedGroups;
 	
-	public List<GroupData> getGroups() {
+	public SortedListOf<GroupData> getGroups() {
  		if (cashedGroups == null) {
 			return rebuildCashe();
  		}
 		return cashedGroups;
 	}
 
-	private List<GroupData> rebuildCashe() {
-		List<GroupData> cashedGroups = new ArrayList<GroupData>();
+	private SortedListOf<GroupData> rebuildCashe() {
+		SortedListOf<GroupData> cashedGroups = new SortedListOf<GroupData>();
+		manager.NavigateTo().toGroupsPage();
 		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
-			GroupData group = new GroupData();
 			String title = checkbox.getAttribute("title");
-			group.name = title.substring("Select (".length(), title.length() - ")".length());
-			cashedGroups.add(group);
+			String name = title.substring("Select (".length(), title.length() - ")".length());
+			cashedGroups.add(new GroupData().withName(name));
 		} 	return cashedGroups;
 	}
 
-	public void createGroup(GroupData group) {
+	public GroupHelper createGroup(GroupData group) {
+		manager.NavigateTo().toGroupsPage();
 		initGroupCreation();
 	    fillGroupData(group);
 	    submitGroupCreation();
 	    returnToGroupPage();
 	    rebuildCashe();
+		return this;
 	}
 
-	public void modifyGroup(GroupData group, int index) {
+	public GroupHelper modifyGroup(GroupData group, int index) {
+		manager.NavigateTo().toGroupsPage();
 		initGroupModification(index);
 		fillGroupData(group);
 	    submitGroupModification();
 	    returnToGroupPage();
 	    rebuildCashe();
+		return this;
 	}
 
-	public void deleteGroup(int index) {
+	public GroupHelper deleteGroup(int index) {
+		manager.NavigateTo().toGroupsPage();
 		selectGroupByIndex(index);
 	    deleteGroup();
 	    returnToGroupPage();
 	    rebuildCashe();
+		return this;
 	}
 	
-	public void initGroupCreation() {
+//-----------------------------------------------------------------------------------
+	
+	public GroupHelper initGroupCreation() {
 		click(By.name("new"));
+		return this;
 	}
 	
-	public void fillGroupData(GroupData group) {
-		type(By.name("group_name"), group.name);
-		type(By.name("group_header"), group.header);
-		type(By.name("group_footer"), group.footer);
+	public GroupHelper fillGroupData(GroupData group) {
+		type(By.name("group_name"), group.getName());
+		type(By.name("group_header"), group.getHeader());
+		type(By.name("group_footer"), group.getFooter());
+		return this;
 	}
 
-	public void returnToGroupPage() {
+	public GroupHelper returnToGroupPage() {
 		click(By.linkText("group page"));
+		return this;
 	}
 
-	public void selectGroupByIndex(int index) {
+	public GroupHelper selectGroupByIndex(int index) {
 		click(By.xpath("//input[@name='selected[]'][" + (index+1) +  "]"));
+		return this;
 	}
 
-	public void initGroupModification(int index) {
+	public GroupHelper initGroupModification(int index) {
 		selectGroupByIndex(index);
 		click(By.name("edit"));
+		return this;
 	}
 	
-	public void clickGroupModification() {
+	public GroupHelper clickGroupModification() {
 		click(By.name("edit"));
+		return this;
 	}
 
-	public void submitGroupCreation() {
+	public GroupHelper submitGroupCreation() {
 		click(By.name("submit"));
 		cashedGroups = null;
+		return this;
 	}
 	
-	public void submitGroupModification() {
+	public GroupHelper submitGroupModification() {
 		click(By.name("update"));
 		cashedGroups = null;
+		return this;
 	}
 	
-	
-	public void deleteGroup() {
+	public GroupHelper deleteGroup() {
 		click(By.name("delete"));
 		cashedGroups = null;
+		return this;
 	}
 
 }
