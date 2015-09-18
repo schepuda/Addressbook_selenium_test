@@ -20,9 +20,8 @@ public class ContactRemovalTests extends TestBase {
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);	    
 	//actions
-	    app.getContactHelper().initContactEditByIndex(index);
-	    app.getContactHelper().deleteContact();
-	    app.getContactHelper().returnToHomePage();
+	    app.getContactHelper().deleteContact(index);
+	    
 	//save new list
 	    List<ContactData> newList = app.getContactHelper().getContacts();
 	    
@@ -31,4 +30,5 @@ public class ContactRemovalTests extends TestBase {
 	    Collections.sort(oldList);
 	    assertEquals(newList, oldList);
 	  }
+
 }

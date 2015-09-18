@@ -13,7 +13,50 @@ public class GroupHelper extends HelperBase{
 	public GroupHelper(ApplicationManager manager) {
 		super(manager);
 	}
+	
+	private List<GroupData> cashedGroups;
+	
+	public List<GroupData> getGroups() {
+ 		if (cashedGroups == null) {
+			return rebuildCashe();
+ 		}
+		return cashedGroups;
+	}
 
+	private List<GroupData> rebuildCashe() {
+		List<GroupData> cashedGroups = new ArrayList<GroupData>();
+		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
+		for (WebElement checkbox : checkboxes) {
+			GroupData group = new GroupData();
+			String title = checkbox.getAttribute("title");
+			group.name = title.substring("Select (".length(), title.length() - ")".length());
+			cashedGroups.add(group);
+		} 	return cashedGroups;
+	}
+
+	public void createGroup(GroupData group) {
+		initGroupCreation();
+	    fillGroupData(group);
+	    submitGroupCreation();
+	    returnToGroupPage();
+	    rebuildCashe();
+	}
+
+	public void modifyGroup(GroupData group, int index) {
+		initGroupModification(index);
+		fillGroupData(group);
+	    submitGroupModification();
+	    returnToGroupPage();
+	    rebuildCashe();
+	}
+
+	public void deleteGroup(int index) {
+		selectGroupByIndex(index);
+	    deleteGroup();
+	    returnToGroupPage();
+	    rebuildCashe();
+	}
+	
 	public void initGroupCreation() {
 		click(By.name("new"));
 	}
@@ -22,11 +65,6 @@ public class GroupHelper extends HelperBase{
 		type(By.name("group_name"), group.name);
 		type(By.name("group_header"), group.header);
 		type(By.name("group_footer"), group.footer);
-	}
-
-	
-	public void submitGroupCreation() {
-		click(By.name("submit"));
 	}
 
 	public void returnToGroupPage() {
@@ -46,25 +84,20 @@ public class GroupHelper extends HelperBase{
 		click(By.name("edit"));
 	}
 
+	public void submitGroupCreation() {
+		click(By.name("submit"));
+		cashedGroups = null;
+	}
+	
 	public void submitGroupModification() {
-		click(By.name("update"));		
+		click(By.name("update"));
+		cashedGroups = null;
 	}
 	
 	
 	public void deleteGroup() {
 		click(By.name("delete"));
+		cashedGroups = null;
 	}
-	
 
-	public List<GroupData> getGroups() {
-		List<GroupData> groups = new ArrayList<GroupData>();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox : checkboxes) {
-			GroupData group = new GroupData();
-			String title = checkbox.getAttribute("title");
-			group.name = title.substring("Select (".length(), title.length() - ")".length());
-			groups.add(group);
-		}
-		return groups;
-	}
 }

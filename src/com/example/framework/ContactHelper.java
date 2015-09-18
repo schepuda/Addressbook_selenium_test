@@ -14,6 +14,50 @@ public class ContactHelper extends HelperBase{
 		super(manager);
 	}
 
+	private List<ContactData> cashedContacts;
+	
+	public List<ContactData> getContacts() {
+ 		if (cashedContacts == null) {
+ 			return rebuildCashe();
+ 		}
+		return cashedContacts;
+	}
+
+	public List<ContactData> rebuildCashe() {
+		List<ContactData> cashedContacts  = new ArrayList<ContactData>();
+		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
+		for (WebElement checkbox : checkboxes) {
+			ContactData contact = new ContactData();
+			String title = checkbox.getAttribute("title");
+			contact.lastname = title.substring(title.lastIndexOf(" ") + 1, title.length() - ")".length());
+			cashedContacts .add(contact);
+		}
+		return cashedContacts ;
+	}
+	
+	public void createContact(ContactData contact) {
+		initContactCreation();
+	    fillContactData(contact);
+	    submitContactCreation();
+	    returnToHomePage();
+	    rebuildCashe();
+	}
+
+	public void modifyContact(ContactData contact, int index) {
+		initContactEditByIndex(index);
+		fillContactData(contact);
+		submitContactModification();
+		returnToHomePage();
+	    rebuildCashe();
+	}
+	
+	public void deleteContact(int index) {
+		initContactEditByIndex(index);
+	    deleteContact();
+	    returnToHomePage();
+	    rebuildCashe();
+	}
+	
 	public void initContactCreation() {
 		click(By.linkText("add new"));
 	}
@@ -35,10 +79,6 @@ public class ContactHelper extends HelperBase{
 		type(By.name("phone2"), contact.phone2);
 	}
 
-	public void submitContactCreation() {
-		click(By.name("submit"));
-	}
-
 	public void returnToHomePage() {
 		click(By.linkText("home page"));
 	}
@@ -47,23 +87,19 @@ public class ContactHelper extends HelperBase{
 			click(By.xpath("(//img[@alt='Edit'])[" + (index+1) + "]"));
 	}
 	
+	public void submitContactCreation() {
+		click(By.name("submit"));
+		cashedContacts = null;
+	}
+	
 	public void submitContactModification() {
 		click(By.name("update"));
+		cashedContacts = null;
 	}
 	
 	public void deleteContact() {
 		click(By.xpath("(//input[@name='update'])[2]"));
+		cashedContacts = null;
 	}
-	
-	public List<ContactData> getContacts() {
-		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox : checkboxes) {
-			ContactData contact = new ContactData();
-			String title = checkbox.getAttribute("title");
-			contact.lastname = title.substring(title.lastIndexOf(" ") + 1, title.length() - ")".length());
-			contacts.add(contact);
-		}
-		return contacts;
-	}
+
 }

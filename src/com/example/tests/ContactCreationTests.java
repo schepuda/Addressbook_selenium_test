@@ -17,10 +17,9 @@ public class ContactCreationTests extends TestBase {
 	//save old list
 		List<ContactData> oldList = app.getContactHelper().getContacts();
 
-	    app.getContactHelper().initContactCreation();
-	    app.getContactHelper().fillContactData(contact);
-	    app.getContactHelper().submitContactCreation();
-	    app.getContactHelper().returnToHomePage();
+	//action
+		app.getContactHelper().createContact(contact);
+		
 	//save new list
 	    List<ContactData> newList = app.getContactHelper().getContacts();
 	    
@@ -29,4 +28,5 @@ public class ContactCreationTests extends TestBase {
 	    Collections.sort(oldList);
 	    assertEquals(newList, oldList);
 	  }
+	
   }

@@ -15,6 +15,7 @@ public class ContactData implements Comparable<ContactData>{
 	public String new_group;
 	public String address2;
 	public String phone2;
+	public String name;
 	
 	public ContactData() {
 	}
