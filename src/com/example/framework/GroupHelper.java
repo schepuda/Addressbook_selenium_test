@@ -100,19 +100,16 @@ public class GroupHelper extends HelperBase{
 
 	public GroupHelper submitGroupCreation() {
 		click(By.name("submit"));
-		cashedGroups = null;
 		return this;
 	}
 	
 	public GroupHelper submitGroupModification() {
 		click(By.name("update"));
-		cashedGroups = null;
 		return this;
 	}
 	
 	public GroupHelper deleteGroup() {
 		click(By.name("delete"));
-		cashedGroups = null;
 		return this;
 	}
 

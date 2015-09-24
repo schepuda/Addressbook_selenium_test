@@ -28,11 +28,10 @@ public class ContactHelper extends HelperBase{
 	public SortedListOf<ContactData> rebuildCashe() {
 		SortedListOf<ContactData> cashedContacts  = new SortedListOf<ContactData>();
 		manager.NavigateTo().toMainPage();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox : checkboxes) {
-			String title = checkbox.getAttribute("title");
-			String lastname = title.substring(title.lastIndexOf(" ") + 1, title.length() - ")".length());
-			cashedContacts .add(new ContactData().withLastname(lastname));
+		List<WebElement> rows = driver.findElements(By.xpath("(.//td[2])[position() != last()]"));
+		for (WebElement row : rows) {
+			String lastname = row. getText();
+			cashedContacts.add(new ContactData().withLastname(lastname));
 		}
 		return cashedContacts ;
 	}
@@ -108,19 +107,16 @@ public class ContactHelper extends HelperBase{
 	
 	public ContactHelper submitContactCreation() {
 		click(By.name("submit"));
-		cashedContacts = null;
 		return this;
 	}
 	
 	public ContactHelper submitContactModification() {
 		click(By.name("update"));
-		cashedContacts = null;
 		return this;
 	}
 	
 	public ContactHelper deleteContact() {
 		click(By.xpath("(//input[@name='update'])[2]"));
-		cashedContacts = null;
 		return this;
 	}
 
