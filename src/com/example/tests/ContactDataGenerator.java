@@ -98,7 +98,7 @@ public class ContactDataGenerator {
 
 	public static List<ContactData> GenerateRandomContacts(int amount) {
 			    List<ContactData> list = new ArrayList <ContactData>();
-			    for (int i = 0; i < 5; i++) {
+			    for (int i = 0; i < amount; i++) {
 			    	ContactData contact = new ContactData()
 			    	.withFirstname(generateRandomContactString())
 			    	.withLastname(generateRandomContactString())

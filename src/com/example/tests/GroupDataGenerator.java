@@ -85,7 +85,7 @@ public class GroupDataGenerator {
 
 	public static List<GroupData> GenerateRandomGroups(int amount) {
 			    List<GroupData> list = new ArrayList <GroupData>();
-			    for (int i = 0; i < 5; i++) {
+			    for (int i = 0; i < amount; i++) {
 			      GroupData group = new GroupData()
 			    	.withName(generateRandomGroupString())
 			    	.withHeader(generateRandomGroupString())
