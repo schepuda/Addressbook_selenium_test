@@ -26,7 +26,8 @@ public class GroupModificationTests extends TestBase {
 	  public void modifySomeGroup(GroupData group) throws Exception {
 
 	//save old list
-		SortedListOf<GroupData> oldList = app.getGroupHelper().getGroups();
+			SortedListOf<GroupData> oldList 
+			= new SortedListOf<GroupData> (app.getHibernateHelper().listGroups());
 	    
 	    Random rnd = new Random();
 	    int index = rnd.nextInt(oldList.size()-1);
@@ -35,7 +36,8 @@ public class GroupModificationTests extends TestBase {
 	    app.getGroupHelper().modifyGroup(group, index);
 	    
 	//save new list
-	    SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
+		SortedListOf<GroupData> newList 
+		= new SortedListOf<GroupData> (app.getHibernateHelper().listGroups());
 	    
 	//compare lists
 	    assertThat(newList, equalTo(oldList.without(index).withAdded(group)));

@@ -26,7 +26,8 @@ public class ContactModificationTests extends TestBase {
 		public void testContactModificationValidData(ContactData contact) throws Exception {
 
 		//save old list
-		  SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+			SortedListOf<ContactData> oldList 
+			= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
 			
 		    Random rnd = new Random();
 		    int index = rnd.nextInt(oldList.size()-1);
@@ -34,7 +35,8 @@ public class ContactModificationTests extends TestBase {
 		    app.getContactHelper().modifyContact(contact, index);
 			
 		//save new list
-		    SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+			SortedListOf<ContactData> newList 
+			= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
 		    
 		//compare lists
 		    assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));

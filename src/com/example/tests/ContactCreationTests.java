@@ -26,13 +26,15 @@ public class ContactCreationTests extends TestBase {
 	public void testContactCreationValidData(ContactData contact) throws Exception {
 
 	//save old list
-		SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+		SortedListOf<ContactData> oldList 
+		= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
 
 	//action
 		app.getContactHelper().createContact(contact);
 		
 	//save new list
-		SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+		SortedListOf<ContactData> newList 
+		= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
 	    
 	//compare lists
 	    assertThat(newList, equalTo(oldList.withAdded(contact)));
