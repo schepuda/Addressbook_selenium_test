@@ -23,8 +23,7 @@ public class ContactRemovalTests extends TestBase {
 	    app.getContactHelper().deleteContact(index);
 	    
 	//save new list
-		SortedListOf<ContactData> newList 
-		= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
+		SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
 	    
 	//compare lists
 	    assertThat(newList, equalTo(oldList.without(index)));

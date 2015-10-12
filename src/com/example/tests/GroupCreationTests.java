@@ -33,9 +33,7 @@ public class GroupCreationTests extends TestBase {
 		app.getGroupHelper().createGroup(group);
 		
 	//save new list
-		//SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
-		SortedListOf<GroupData> newList 
-		= new SortedListOf<GroupData> (app.getHibernateHelper().listGroups());
+		SortedListOf<GroupData> newList = app.getGroupHelper().getGroups();
 	    
 	//compare lists
 	    assertThat(newList, equalTo(oldList.withAdded(group)));

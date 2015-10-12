@@ -33,8 +33,7 @@ public class ContactCreationTests extends TestBase {
 		app.getContactHelper().createContact(contact);
 		
 	//save new list
-		SortedListOf<ContactData> newList 
-		= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
+		SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
 	    
 	//compare lists
 	    assertThat(newList, equalTo(oldList.withAdded(contact)));

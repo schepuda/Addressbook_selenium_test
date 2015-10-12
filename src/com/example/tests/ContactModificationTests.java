@@ -35,8 +35,7 @@ public class ContactModificationTests extends TestBase {
 		    app.getContactHelper().modifyContact(contact, index);
 			
 		//save new list
-			SortedListOf<ContactData> newList 
-			= new SortedListOf<ContactData> (app.getHibernateHelper().listContacts());
+			SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
 		    
 		//compare lists
 		    assertThat(newList, equalTo(oldList.without(index).withAdded(contact)));
